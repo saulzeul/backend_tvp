@@ -1,0 +1,19 @@
+class User < ApplicationRecord
+    has_secure_password
+
+    validates :username, presence: true, uniqueness: true
+    validates :password, length: { in: 8..20 }, format: { with: /\A (?=.{8,}) (?=.*\d) (?=.*[a-z]) (?=.*[A-Z]) (?=.*[[:^alnum:]]) 
+    /x }
+
+    def self.from_token_request request
+        username = request.params["auth"] && request.params["auth"]["username"]
+        self.find_by username: username
+      end
+      
+    def to_token_payload
+      {
+        sub: id,
+        username: username,
+      }
+    end 
+end
