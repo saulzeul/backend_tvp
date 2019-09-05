@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   wrap_parameters :user, include: [:username, :password, :password_confirmation, :status]
   # GET /users
   def index
+    
     @users = User.all
 
     render json: @users
@@ -16,6 +17,7 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
+    
     @user = User.new(user_params)
 
     if @user.save
