@@ -17,8 +17,8 @@ gem 'puma', '~> 3.11'
 gem 'bcrypt', '~> 3.1.7'
 # Use active_model_serializers for serializer model in the api
 gem 'active_model_serializers'
-# Use gem knock for jwt authenticate
-gem 'knock'
+# Use JWT for authentication
+gem 'jwt'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
